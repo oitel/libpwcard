@@ -19,5 +19,5 @@ uniform_int_distribution::result_type uniform_int_distribution::operator ()(line
         bits = (result_type)(g() >> 17);
         val = bits % n;
     } while (bits - val + (n - 1) < 0); // checks integer overflow to provide uniform distribution
-    return val;
+    return val + param.a;
 }
