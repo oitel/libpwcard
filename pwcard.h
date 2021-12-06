@@ -17,8 +17,14 @@ struct PwCard
     line_type header;
     std::array<line_type, row_count> rows;
 
+    enum options {
+        none = 0x0,
+        area_with_only_digits = 0x1,
+        include_symbols = 0x2,
+    };
+
     using seed_type = uint64_t;
-    static PwCard generate(seed_type seed);
+    static PwCard generate(seed_type seed, int options = none);
 
     static const char *to_utf8(symbol_type symbol);
     static char16_t to_utf16(symbol_type symbol);

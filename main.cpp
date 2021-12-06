@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    const auto pwcard = PwCard::generate(seed);
+    const auto pwcard = PwCard::generate(seed, PwCard::include_symbols | PwCard::area_with_only_digits);
     std::cout << PwCard::to_utf8(pwcard.header) << std::endl;
     for (auto &&row : pwcard.rows)
         std::cout << PwCard::to_utf8(row) << std::endl;
