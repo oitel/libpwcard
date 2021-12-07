@@ -31,12 +31,12 @@ PwCard PwCard::generate(seed_type seed, int options)
         0x3F, 0x91, 0x2B, 0x7B, 0x7D, 0x5B, 0x5D, 0x28,
         0x29, 0x2F, 0x5C,
     };
-    uniform_int_distribution D;
-    uniform_int_distribution::param_type
+    static const uniform_int_distribution::param_type
             default_params(2, 56),
             only_digits_params(0, 9),
             include_symbols_params(2, 75);
 
+    uniform_int_distribution D;
     for (auto r = 0u; r < row_count; ++r) {
         auto &row = result.rows[r];
 
