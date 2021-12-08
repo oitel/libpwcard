@@ -49,10 +49,21 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 include(GNUInstallDirs)
 
 install(TARGETS ${PROJECT_NAME}
+    EXPORT PwCardConfig
     LIBRARY
         DESTINATION ${CMAKE_INSTALL_LIBDIR}
         COMPONENT lib
     PUBLIC_HEADER
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
         COMPONENT dev
+)
+
+export(TARGETS ${PROJECT_NAME}
+    NAMESPACE PwCard::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/PwCardConfig.cmake
+)
+
+install(EXPORT PwCardConfig
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/PwCard/cmake
+    NAMESPACE PwCard::
 )
