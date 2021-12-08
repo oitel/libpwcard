@@ -1,4 +1,4 @@
-#include "pwcard.h"
+#include "pwcard/pwcard.h"
 #include "shuffle.h"
 
 PwCard PwCard::generate(seed_type seed, int options)
