@@ -67,3 +67,9 @@ install(EXPORT PwCardConfig
     DESTINATION ${CMAKE_INSTALL_DATADIR}/PwCard/cmake
     NAMESPACE PwCard::
 )
+
+include(CTest)
+if (BUILD_TESTING)
+    enable_testing()
+    add_subdirectory(test)
+endif()
