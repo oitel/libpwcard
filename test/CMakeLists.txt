@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 add_executable(pwcard_test
     main.cpp
-    test.cpp
+    test_convert.cpp
+    test_generate.cpp
 )
 
 find_package(Catch2 REQUIRED)
