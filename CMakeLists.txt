@@ -8,8 +8,9 @@ project(pwcard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(LIBRARY_PUBLIC_HEADER
+set(LIBRARY_PUBLIC_HEADERS
     include/pwcard/pwcard.h
+    include/pwcard/pwcard_c.h
 )
 
 set(LIBRARY_HEADERS
@@ -25,7 +26,7 @@ set(LIBRARY_SOURCES
 )
 
 add_library(${PROJECT_NAME} SHARED
-    ${LIBRARY_PUBLIC_HEADER}
+    ${LIBRARY_PUBLIC_HEADERS}
     ${LIBRARY_HEADERS}
     ${LIBRARY_SOURCES}
 )
@@ -41,9 +42,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    VERSION       ${PROJECT_VERSION}
-    SOVERSION     0
-    PUBLIC_HEADER ${LIBRARY_PUBLIC_HEADER}
+    VERSION   ${PROJECT_VERSION}
+    SOVERSION 0
 )
 
 include(GNUInstallDirs)
@@ -53,7 +53,10 @@ install(TARGETS ${PROJECT_NAME}
     LIBRARY
         DESTINATION ${CMAKE_INSTALL_LIBDIR}
         COMPONENT lib
-    PUBLIC_HEADER
+)
+
+install(
+    FILES ${LIBRARY_PUBLIC_HEADERS}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
         COMPONENT dev
 )
