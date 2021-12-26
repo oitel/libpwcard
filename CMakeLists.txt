@@ -22,6 +22,7 @@ set(LIBRARY_HEADERS
 set(LIBRARY_SOURCES
     src/linear_congruential_engine.cpp
     src/pwcard.cpp
+    src/pwcard_c.cpp
     src/uniform_int_distribution.cpp
 )
 
