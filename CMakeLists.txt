@@ -68,6 +68,11 @@ install(EXPORT PwCardConfig
     NAMESPACE PwCard::
 )
 
+option(BUILD_EXAMPLE "Build example app" OFF)
+if (BUILD_EXAMPLE)
+    add_subdirectory(example)
+endif()
+
 include(CTest)
 if (BUILD_TESTING)
     enable_testing()
